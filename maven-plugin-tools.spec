@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        3.1
-Release:        17.14%{?dist}
+Release:        17.15%{?dist}
 Epoch:          0
 Summary:        Maven Plugin Tools
 
@@ -161,7 +161,7 @@ with scripting languages instead of compiled Java.
 
 %package -n %{?scl_prefix}maven-script-ant
 Summary:        Maven Ant Mojo Support
-Requires:       maven30-maven-script = %{epoch}:%{version}-%{release}
+Requires:       %{?scl_prefix}maven-script = %{epoch}:%{version}-%{release}
 
 %description -n %{?scl_prefix}maven-script-ant
 This package provides %{summary}, which write Maven plugins with
@@ -169,7 +169,7 @@ Ant scripts.
 
 %package -n %{?scl_prefix}maven-script-beanshell
 Summary:        Maven Beanshell Mojo Support
-Requires:       maven30-maven-script = %{epoch}:%{version}-%{release}
+Requires:       %{?scl_prefix}maven-script = %{epoch}:%{version}-%{release}
 
 %description -n %{?scl_prefix}maven-script-beanshell
 This package provides %{summary}, which write Maven plugins with
@@ -256,6 +256,9 @@ set -e -x
 
 
 %changelog
+* Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0:3.1-17.15
+- Get rid of maven30 inner dependency
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0:3.1-17.14
 - maven33 rebuild
 
