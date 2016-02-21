@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        3.1
-Release:        17.15%{?dist}
+Release:        17.16%{?dist}
 Epoch:          0
 Summary:        Maven Plugin Tools
 
@@ -19,49 +19,49 @@ Patch0:         %{pkg_name}-rhbz-920042.patch
 
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:  %{?scl_prefix_java_common}maven-local
-BuildRequires:  maven30-maven-parent
+BuildRequires:  %{?scl_prefix}maven-parent
 BuildRequires:  %{?scl_prefix_java_common}ant
-BuildRequires:  maven30-bsh
-BuildRequires:  maven30-jtidy
-BuildRequires:  maven30-maven-artifact-manager
-BuildRequires:  maven30-maven-doxia-sink-api
-BuildRequires:  maven30-maven-doxia-sitetools
-BuildRequires:  maven30-maven-enforcer-plugin
-BuildRequires:  maven30-maven-plugin-annotations
-BuildRequires:  maven30-maven-plugin-descriptor
-BuildRequires:  maven30-maven-plugin-registry
-BuildRequires:  maven30-maven-plugin-tools-annotations
-BuildRequires:  maven30-maven-plugin-tools-api
-BuildRequires:  maven30-maven-plugin-tools-generators
-BuildRequires:  maven30-maven-plugin-tools-java
-BuildRequires:  maven30-maven-plugin-tools-model
-BuildRequires:  maven30-maven-project
-BuildRequires:  maven30-maven-reporting-api
-BuildRequires:  maven30-maven-reporting-impl
+BuildRequires:  %{?scl_prefix}bsh
+BuildRequires:  %{?scl_prefix}jtidy
+BuildRequires:  %{?scl_prefix}maven-artifact-manager
+BuildRequires:  %{?scl_prefix}maven-doxia-sink-api
+BuildRequires:  %{?scl_prefix}maven-doxia-sitetools
+BuildRequires:  %{?scl_prefix}maven-enforcer-plugin
+BuildRequires:  %{?scl_prefix}maven-plugin-annotations
+BuildRequires:  %{?scl_prefix}maven-plugin-descriptor
+BuildRequires:  %{?scl_prefix}maven-plugin-registry
+BuildRequires:  %{?scl_prefix}maven-plugin-tools-annotations
+BuildRequires:  %{?scl_prefix}maven-plugin-tools-api
+BuildRequires:  %{?scl_prefix}maven-plugin-tools-generators
+BuildRequires:  %{?scl_prefix}maven-plugin-tools-java
+BuildRequires:  %{?scl_prefix}maven-plugin-tools-model
+BuildRequires:  %{?scl_prefix}maven-project
+BuildRequires:  %{?scl_prefix}maven-reporting-api
+BuildRequires:  %{?scl_prefix}maven-reporting-impl
 BuildRequires:  %{?scl_prefix_java_common}objectweb-asm
-BuildRequires:  maven30-plexus-ant-factory
-BuildRequires:  maven30-plexus-archiver
-BuildRequires:  maven30-plexus-bsh-factory
-BuildRequires:  maven30-plexus-containers-component-annotations
-BuildRequires:  maven30-plexus-containers-component-metadata
-BuildRequires:  maven30-plexus-containers-container-default
-BuildRequires:  maven30-plexus-utils
-BuildRequires:  maven30-plexus-velocity
+BuildRequires:  %{?scl_prefix}plexus-ant-factory
+BuildRequires:  %{?scl_prefix}plexus-archiver
+BuildRequires:  %{?scl_prefix}plexus-bsh-factory
+BuildRequires:  %{?scl_prefix}plexus-containers-component-annotations
+BuildRequires:  %{?scl_prefix}plexus-containers-component-metadata
+BuildRequires:  %{?scl_prefix}plexus-containers-container-default
+BuildRequires:  %{?scl_prefix}plexus-utils
+BuildRequires:  %{?scl_prefix}plexus-velocity
 BuildRequires:  %{?scl_prefix_java_common}qdox
-BuildRequires:  maven30-velocity
-BuildRequires:  maven30-maven-resources-plugin
+BuildRequires:  %{?scl_prefix}velocity
+BuildRequires:  %{?scl_prefix}maven-resources-plugin
 # This is parent POM of the plexus-ant-factory. It is not pulled in
 # as a dependency of plexus-ant-factory, but we need it, because
 # maven-script-ant subpackage fails to build without it.
-BuildRequires:  maven30-plexus-component-factories-pom
+BuildRequires:  %{?scl_prefix}plexus-component-factories-pom
 # Test dependencies:
 %if 0
 BuildRequires:  %{?scl_prefix_java_common}easymock
-BuildRequires:  maven30-fest-assert
+BuildRequires:  %{?scl_prefix}fest-assert
 BuildRequires:  %{?scl_prefix_java_common}junit
-BuildRequires:  maven30-maven-plugin-testing-harness
-BuildRequires:  maven30-plexus-compiler
-BuildRequires:  maven30-xmlunit
+BuildRequires:  %{?scl_prefix}maven-plugin-testing-harness
+BuildRequires:  %{?scl_prefix}plexus-compiler
+BuildRequires:  %{?scl_prefix}xmlunit
 %endif
 
 
@@ -188,7 +188,7 @@ API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %patch0 -p1
 
@@ -208,13 +208,13 @@ ln -s maven-script/maven-script-{ant,beanshell} .
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build -f -s
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -256,6 +256,9 @@ set -e -x
 
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:3.1-17.16
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0:3.1-17.15
 - Get rid of maven30 inner dependency
 
