@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        3.1
-Release:        17.16%{?dist}
+Release:        17.17%{?dist}
 Epoch:          0
 Summary:        Maven Plugin Tools
 
@@ -18,7 +18,7 @@ BuildArch:      noarch
 Patch0:         %{pkg_name}-rhbz-920042.patch
 
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix}maven-parent
 BuildRequires:  %{?scl_prefix_java_common}ant
 BuildRequires:  %{?scl_prefix}bsh
@@ -256,6 +256,9 @@ set -e -x
 
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 0:3.1-17.17
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:3.1-17.16
 - maven33 rebuild #2
 
