@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}maven-plugin-tools
 Version:        3.5
-Release:        2.1%{?dist}
+Release:        2.2%{?dist}
 Epoch:          0
 Summary:        Maven Plugin Tools
 License:        ASL 2.0
@@ -257,6 +257,9 @@ API documentation for %{pkg_name}.
 %doc LICENSE NOTICE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 0:3.5-2.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 0:3.5-2.1
 - Automated package import and SCL-ization
 
